@@ -19,3 +19,7 @@ python main.py
 ```
 
 Check the output folder for any generated images.
+
+## Designs
+
+[Figma Project](https://www.figma.com/file/4kQBAN6EQVKmy4a3OscIDK/Project-Safe-Flight-Designs?type=design&node-id=0%3A1&mode=design&t=HG4kfTrXIorJMlSS-1)
