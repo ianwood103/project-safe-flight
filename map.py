@@ -3,6 +3,7 @@ import folium
 from selenium import webdriver
 import time
 import os
+import imgkit
 
 def create_map_for_month_year(csv_file, year, month):
     # Load the CSV file
@@ -15,28 +16,41 @@ def create_map_for_month_year(csv_file, year, month):
     filtered_data = data[(data['Date'].dt.year == year) & (data['Date'].dt.month == month)]
 
     # Starting location for the map
-    if not filtered_data.empty:
-        start_coords = (filtered_data.iloc[0]['y'], filtered_data.iloc[0]['x'])
-    else:
-        start_coords = (0, 0)  # Default location if no data is available
+    start_coords = (33.75873004, -84.39060179)
 
-    my_map = folium.Map(location=start_coords, zoom_start=13)
+    my_map = folium.Map(location=start_coords, zoom_start=15)
 
     # Add a marker for each lat-long pair
     for index, row in filtered_data.iterrows():
         folium.Marker((row['y'], row['x']), popup=f'{row["Date"]}').add_to(my_map)
 
     # Save the map as an HTML file
-    my_map.save('my_map.html')
+    my_map.save('raw_map.html')
 
     # Use selenium to open the map in a browser and take a screenshot
     driver = webdriver.Chrome()
-    driver.get('file://' + os.path.realpath('my_map.html'))
+    driver.get('file://' + os.path.realpath('raw_map.html'))
     time.sleep(5)  # Wait for the map to load completely
-    driver.save_screenshot('my_map.png')  # Save the screenshot as an image
+    driver.save_screenshot('templates/map/images/raw_map.png')  # Save the screenshot as an image
     driver.quit()
 
-    return 'Map saved as my_map.png'
-
 # Example usage: create a map for April 2022
-create_map_for_month_year('data.csv', 2023, 10)
+create_map_for_month_year('data.csv', 2022, 10)
+
+options = {
+    'format': 'png',
+    'crop-h': '322',
+    'crop-w': '208',
+    'crop-x': '8',
+    'crop-y': '8',
+    'enable-local-file-access': None,
+    'quality': '100'
+}
+
+imgkit.from_file("templates/map/template.html", "output/map.png", options=options)
+
+if os.path.exists("raw_map.html"):
+    os.remove("raw_map.html")
+
+if os.path.exists("templates/map/images/raw_map.png"):
+    os.remove("templates/map/images/raw_map.png")
