@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v19_2 {
+  width: 208px;
+  height: 322px;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v19_3 {
+  width: 161px;
+  color: rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 8px;
+  left: 23px;
+  font-family: Jost;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+}
+.v21_7 {
+  width: 191px;
+  height: 161px;
+  background: url("../chart.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 109px;
+  left: 8px;
+  overflow: hidden;
+}
