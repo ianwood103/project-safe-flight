@@ -39,12 +39,13 @@ create_map_for_month_year('data.csv', 2022, 10)
 
 options = {
     'format': 'png',
-    'crop-h': '322',
-    'crop-w': '208',
-    'crop-x': '8',
-    'crop-y': '8',
+    'crop-h': '644',
+    'crop-w': '416',
+    'crop-x': '16',
+    'crop-y': '16',
     'enable-local-file-access': None,
-    'quality': '100'
+    'quality': '100',
+    'zoom': 2
 }
 
 imgkit.from_file("templates/map/template.html", "output/map.png", options=options)
