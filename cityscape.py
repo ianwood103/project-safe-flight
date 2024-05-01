@@ -2,10 +2,16 @@ import os
 import pandas as pd
 import calendar
 import imgkit
+import argparse
+
+parser = argparse.ArgumentParser(description="Generator for city scape design.")
+parser.add_argument("-year", "--year", type=int, required=True, help="Year")
+parser.add_argument("-month", "--month", type=int, required=True, help="Month")
+args = parser.parse_args()
 
 # Constants
-YEAR = 2023
-MONTH = 9
+YEAR = args.year
+MONTH = args.month
 TEMPLATE_PATH = 'templates/cityscape/template.html'
 PARSED_TEMPLATE_PATH = 'templates/cityscape/parsed_template.html'
 OUTPUT_DIR = 'output'

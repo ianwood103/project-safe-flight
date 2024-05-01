@@ -2,9 +2,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import imgkit
 import os
+import argparse
 
-YEAR = 2023
-MONTH = 4
+parser = argparse.ArgumentParser(description="Generator for city scape design.")
+parser.add_argument("-year", "--year", type=int, required=True, help="Year")
+parser.add_argument("-month", "--month", type=int, required=True, help="Month")
+args = parser.parse_args()
+
+# Constants
+YEAR = args.year
+MONTH = args.month
 
 data = pd.read_csv('data.csv', encoding='ISO-8859-1')
 data['Date'] = pd.to_datetime(data['Date'])

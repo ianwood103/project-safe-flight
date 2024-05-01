@@ -4,6 +4,16 @@ from selenium import webdriver
 import time
 import os
 import imgkit
+import argparse
+
+parser = argparse.ArgumentParser(description="Generator for city scape design.")
+parser.add_argument("-year", "--year", type=int, required=True, help="Year")
+parser.add_argument("-month", "--month", type=int, required=True, help="Month")
+args = parser.parse_args()
+
+# Constants
+YEAR = args.year
+MONTH = args.month
 
 def create_map_for_month_year(csv_file, year, month):
     # Load the CSV file
@@ -35,7 +45,7 @@ def create_map_for_month_year(csv_file, year, month):
     driver.quit()
 
 # Example usage: create a map for April 2022
-create_map_for_month_year('data.csv', 2022, 10)
+create_map_for_month_year('data.csv', YEAR, MONTH)
 
 options = {
     'format': 'png',
