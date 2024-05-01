@@ -12,10 +12,16 @@ pip install -r requirements.txt
 
 ## How to Run
 
+**There are 3 different designs that can be generated with 3 different Python files:**
+
+1. `cityscape.py`
+2. `map.py`
+3. `piechart.py`
+
 From the root directory run the following command:
 
 ```bash
-python main.py
+python <design-name>.py -month <month> -year <year>
 ```
 
 Check the output folder for any generated images.
